@@ -12,6 +12,8 @@
     <title>Title</title>
 </head>
 <body>
+<form method="post" name="frmDelete" action="/bbs/delete">
+    <input type="hidden" id="idx" name="idx" value="${dto.idx}">
 <h1>게시판 상세</h1>
 <div>${dto.idx}</div>
 <div>${dto.user_id}</div>
@@ -23,10 +25,23 @@
 <div>${dto.read_cnt}</div>
 <div>
     <button type="button" onclick="location.href='/bbs/list'">리스트</button>
-    <button type="button" onclick="location.href='/bbs/modify?idx=1'">수정</button>
-    <form method="post" name="frm" action="/bbs/delete?idx=1" style="display: inline">
-    <button type="submit">삭제</button>
-    </form>
+    <button type="button" onclick="location.href='/bbs/modify?idx=${dto.idx}'">수정</button>
+    <button type="submit" onclick="goDelete()">삭제</button>
+
 </div>
+</form>
+
+<script>
+    function goDelete(){
+        if(document.getElementById("idx")!=null) {
+            let idx = document.getElementById("idx").value;
+            if (confirm("삭제하시겠습니까?")) {
+                document.getElementById("frmDelete").submit();
+            }
+        }
+    }
+
+</script>
+
 </body>
 </html>

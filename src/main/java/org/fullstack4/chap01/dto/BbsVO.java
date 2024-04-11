@@ -1,14 +1,13 @@
 package org.fullstack4.chap01.dto;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.ToString;
+import lombok.*;
 
 import java.time.LocalDate;
 
-@Getter
+@Data
 @Builder
-@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 public class BbsVO {
     private int idx;
     private String user_id;

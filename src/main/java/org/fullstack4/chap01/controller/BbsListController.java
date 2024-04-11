@@ -13,9 +13,6 @@ import java.util.List;
 public class BbsListController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("=============================");
-        System.out.println("/bbs/list");
-        System.out.println("=============================");
 
         List<BbsDTO> dtoList = null;
         try {

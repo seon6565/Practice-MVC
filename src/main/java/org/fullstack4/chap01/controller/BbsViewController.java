@@ -12,13 +12,13 @@ import java.io.IOException;
 public class BbsViewController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("=============================");
-        System.out.println("/bbs/view");
-        System.out.println("=============================");
-        int idx = Integer.parseInt(request.getParameter("idx"));
-        BbsDTO dto = BbsService.INSTANCE.view(idx);
-        request.setAttribute("dto",dto);
-
+        try {
+            int idx = Integer.parseInt(request.getParameter("idx"));
+            BbsDTO dto = BbsService.INSTANCE.view(idx);
+            request.setAttribute("dto",dto);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         request.getRequestDispatcher("/WEB-INF/views/bbs/view.jsp").forward(request,response);
     }
 

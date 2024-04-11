@@ -8,7 +8,6 @@ import java.time.LocalDate;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@ToString
 public class BbsDTO {
     private int idx;
     private String user_id;

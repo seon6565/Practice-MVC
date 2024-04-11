@@ -1,5 +1,6 @@
 package org.fullstack4.chap01.service;
 
+import lombok.extern.log4j.Log4j2;
 import org.fullstack4.chap01.dao.BbsDAO;
 import org.fullstack4.chap01.dto.BbsDTO;
 import org.fullstack4.chap01.dto.BbsVO;
@@ -38,22 +39,31 @@ public enum BbsService {
         return bbsDTOList;
     }
 
-    public BbsDTO view(int idx){
-        BbsDTO dto = new BbsDTO();
-        dto.setIdx(idx);
-        dto.setUser_id("webuser");
-        dto.setTitle("Bbs Title..."+idx);
-        dto.setContent("Bbs content..."+idx);
-        dto.setDisplay_date(LocalDate.now().toString());
-        dto.setRead_cnt(0);
+    public BbsDTO view(int idx) throws Exception {
+//        BbsDTO dto = new BbsDTO();
+//        dto.setIdx(idx);
+//        dto.setUser_id("webuser");
+//        dto.setTitle("Bbs Title..."+idx);
+//        dto.setContent("Bbs content..."+idx);
+//        dto.setDisplay_date(LocalDate.now().toString());
+//        dto.setRead_cnt(0);
 
-
-        return dto;
+        BbsVO bbsVO = dao.view(idx);
+        BbsDTO bbsDTO = modelMapper.map(bbsVO, BbsDTO.class);
+        return bbsDTO;
     }
 
-    public void regist(BbsVO vo) throws Exception{
-        BbsDAO dao = new BbsDAO();
-        dao.regist(vo);
+    public int regist(BbsDTO bbsDTO) throws Exception{
+        BbsVO bbsVO = modelMapper.map(bbsDTO, BbsVO.class);
+        return dao.regist(bbsVO);
     }
 
+    public int modify(BbsDTO bbsDTO) throws Exception{
+        BbsVO bbsVO = modelMapper.map(bbsDTO, BbsVO.class);
+        return dao.modify(bbsVO);
+    }
+
+    public int delete(int idx) throws Exception{
+        return dao.delete(idx);
+    }
 }

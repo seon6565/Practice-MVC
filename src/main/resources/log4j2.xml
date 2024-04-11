@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<configuration staus="INF0">
+<Configuration status="INFO">
     <Appenders>
-        <Console name="CONSOLE" target="SYSTEM_OUT">
-            <PatternLayout charset="UTF-8" patter="%d{hh:mm:ss} %5p [%c] %m%n" />
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout charset="UTF-8" pattern="%d{hh:mm:ss} %5p [%c] %m%n" />
         </Console>
     </Appenders>
 
-    <loggers>
-        <logger name="org.fullstack4" level="INFO" additibity="false">
-            <append-ref ref="CONSOLE" />
-        </logger>
+    <Loggers>
+        <Logger name="org.fullstack4" level="info">
+            <AppenderRef ref="Console" />
+        </Logger>
 
-        <logger name="org.fullstack4.mapper" level="INFO" additibity="false">
-            <append-ref ref="CONSOLE" />
-        </logger>
-        <root level="INFO" additibity="false">
-            <append-ref ref="CONSOLE" />
-        </root>
-    </loggers>
-</configuration>
+        <Logger name="org.fullstack4.mapper" level="info">
+            <AppenderRef ref="Console" />
+        </Logger>
+        <Root level="info">
+            <AppenderRef ref="Console" />
+        </Root>
+    </Loggers>
+</Configuration>
