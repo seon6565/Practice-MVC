@@ -69,12 +69,13 @@ public class BbsDAO {
         @Cleanup PreparedStatement pstmt = conn.prepareStatement(sb.toString());
         pstmt.setInt(1,idx);
         @Cleanup ResultSet rs = pstmt.executeQuery();
+        BbsVO vo = null;
+        if(rs.next()) {
+            vo = BbsVO.builder().idx(rs.getInt("idx")).user_id(rs.getString("user_id")).title(rs.getString("title"))
+                    .content(rs.getString("content")).display_date(rs.getString("display_date")).read_cnt(rs.getInt("read_cnt"))
+                    .reg_date(rs.getDate("reg_date").toLocalDate()).build();
 
-        rs.next();
-        BbsVO vo = BbsVO.builder().idx(rs.getInt("idx")).user_id(rs.getString("user_id")).title(rs.getString("title"))
-                .content(rs.getString("content")).display_date(rs.getString("display_date")).read_cnt(rs.getInt("read_cnt"))
-                .reg_date(rs.getDate("reg_date").toLocalDate()).build();
-
+        }
         return vo;
     }
 

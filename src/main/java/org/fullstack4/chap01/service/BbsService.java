@@ -21,17 +21,6 @@ public enum BbsService {
         modelMapper = new ModelMapper();
     }
     public List<BbsDTO> bbsList() throws Exception {
-//        List<BbsDTO> bbsDTOS = IntStream.range(0,10).mapToObj(i->{
-//            BbsDTO dto = new BbsDTO();
-//            dto.setIdx(i);
-//            dto.setUser_id("webuser");
-//            dto.setTitle("Bbs Title..."+i);
-//            dto.setContent("Bbs content..."+i);
-//            dto.setDisplay_date(LocalDate.now().toString());
-//            dto.setRead_cnt(0);
-//            //DB에서 가져오는 것으로 변경
-//            return dto;
-//        }).collect(Collectors.toList());
 
         List<BbsVO> bbsVOList = dao.list();
         List<BbsDTO> bbsDTOList = bbsVOList.stream().map(vo->modelMapper.map(vo, BbsDTO.class)).collect(Collectors.toList());
@@ -40,13 +29,6 @@ public enum BbsService {
     }
 
     public BbsDTO view(int idx) throws Exception {
-//        BbsDTO dto = new BbsDTO();
-//        dto.setIdx(idx);
-//        dto.setUser_id("webuser");
-//        dto.setTitle("Bbs Title..."+idx);
-//        dto.setContent("Bbs content..."+idx);
-//        dto.setDisplay_date(LocalDate.now().toString());
-//        dto.setRead_cnt(0);
 
         BbsVO bbsVO = dao.view(idx);
         BbsDTO bbsDTO = modelMapper.map(bbsVO, BbsDTO.class);

@@ -15,6 +15,7 @@
   <li><a href="/bbs/view">상세</a></li>
   <li><a href="/bbs/modify">수정</a></li>
   <li><a href="/bbs/delete">삭제</a></li>
+  <li><a href="/member/login">로그인</a></li>
 </ul>
 </body>
 </html>
